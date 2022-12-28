@@ -52,7 +52,11 @@
   .channel('public:users')
   .on('postgres_changes', { event: '*', schema: 'public', table: 'users' }, payload => {
     console.log('Change received!', payload)
-    userDataGrid = [...data, payload.new]
+    if (payload.eventType == 'INSERT')
+      userDataGrid = [...userDataGrid, payload.new]
+    else if (payload.eventType == 'UPDATE')
+      userDataGrid = [...userDataGrid.filter(user => user.id != payload.old.id), payload.new]
+
     console.log(userDataGrid);
   })
   .subscribe()
@@ -68,7 +72,9 @@
           departmentName
         }
   
-        let { error } = await supabase.from('users').upsert(updates)
+        let { error } = await supabase.from('users')
+        .update({ departmentName: departmentName })
+        .eq('id', id);
     }
     const updateUser = async () => {
       try {
