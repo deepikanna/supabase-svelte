@@ -139,10 +139,10 @@
 
   <style>
     .ag-theme-alpine {
-      --ag-background-color: #17c1ffc2;
+      --ag-background-color: #ffffff36;
       --ag-border-color: transparent;
-      --ag-header-background-color: #00f4ff9c;
-      --ag-odd-row-background-color: #00f4ff9c;
+      --ag-header-background-color: #00f4ff1f;
+      --ag-odd-row-background-color: #00f4ff1f;
       --ag-borders: solid 0px;
       padding: 50px;
     }
@@ -171,7 +171,7 @@
       margin-top: 50px;
     }
     .form-widget {
-      background-color: (23 193 255 / 15%);
+      background-color: #00f4ff1f;
       padding: 2vh 6vh;
     }
   </style>
